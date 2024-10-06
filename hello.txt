@@ -1,0 +1,6 @@
+SELECT (Name, PaymentAmount, Age) 
+FROM Clients 
+WHERE Age > 20 
+GROUP BY City 
+HAVING PaymentAmount > 1000
+ORDER BY Age
