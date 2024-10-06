@@ -1,0 +1,48 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iomanip>
+using namespace std;
+int main() {
+    vector<int> numbers = { 8, 2, 9, 6 };
+    setlocale(LC_ALL, "Russian");
+    int number;
+    int zamesh = 0;
+    int ost = 0;
+    
+    while (true) {
+        cout << "Введите число (или 10 для выхода): ";
+        cin >> number;
+
+        if (number == 10) {
+            break;
+        }
+
+        bool found = false;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers[i] == number) {
+                found = true;
+                ost++;
+                break;
+            }
+        }
+
+        if (!found) {
+            numbers.push_back(number);
+            numbers.erase(numbers.begin());
+            zamesh++;
+        }
+
+        cout << "Новый вектор: ";
+        for (int i = 0; i < numbers.size(); i++) {
+            cout << numbers[i] << " ";
+        }
+        cout << endl;
+        cout << "Сколько раз не изменялось: " << ost << endl;
+        cout << "Сколько раз изменялось: " << zamesh << endl;
+    }
+
+    return 0;
+}
+
+
